@@ -1,10 +1,9 @@
-# use as follow
-
 # This is a file or folder search engine made by python
 
 # Speed ​​and other features will be added
 
 
+# use as follow
 
 from pfsearch import PFSEARCH as ps
 
