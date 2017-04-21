@@ -5,13 +5,12 @@
  Speed ​​and other features added
 
 
+import pfsearch as pf
+pf=pf.PFSEARCH(word)  --> word = this means ,This is the word you want to search
 
-#import pfsearch as pf
-#pf=pf.PFSEARCH(word)  --> word = this means ,This is the word you want to search
-
-#folder=pf.Folder() -->  this is a list
-#file=pf.File()   -->   this is a list
-
+folder=pf.Folder() -->  this is a list
+file=pf.File()   -->   this is a list
 
 
- to be continued
+
+ #o be continued
