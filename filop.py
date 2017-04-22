@@ -1,6 +1,9 @@
+" filop --> file operaions --> dosya işlemleri"
 import os
+
+
 class Help():
-    """Bu yardım sınıfı PFSEARCH sınıfına yardım etmesi için yazıldı ve
+    """Bu yardım sınıfı SEARCH sınıfına yardım etmesi için yazıldı ve
      amacı girilen uzantılardaki tüm dosları ve klasörleri bulmaktır"""
     def __init__(self,driv):
         self.isdir=[]# bu bulunan klasör leri geçeci depoluyor
@@ -59,7 +62,8 @@ class PSA():
             if self.word in os.path.split(word_l)[1] and word_l not in self.result:
                 self.result.append(word_l)
         return self.result
-class PFSEARCH():
+class FILOP():
+    """ python dosya işlemleri, ana sınıf bu """
     def __init__(self):
         self.drivers=[] # ve pc de kullanılan sürücü yollarını buluyoruz
         extensions="dabqwrtyuıopğüişlkjfszxvnmöçc/"
@@ -80,15 +84,22 @@ class PFSEARCH():
                 if fo not in self.isdir:
                     self.isdir.append(fo) # bulunan her klasörü genişlemesi için isdire ekliyoruz
         ###########################################################################
-    def File(self,word): # aranan kelime ile işlesen dosya isimlerini bulur liste olarak verir
+    def SearchFile(self,word): # aranan kelime ile işlesen dosya isimlerini bulur liste olarak verir
         show=[]
         for isd in self.isdir :
             for add in PSA(word,Help(driv=isd).File()).Match():
                 show.append(add)
         return show
-    def Folder(self,word): # aranan kelime mile eşleşen dosyaları bulur ve liste olarak verir
+    def SearchFolder(self,word): # aranan kelime mile eşleşen dosyaları bulur ve liste olarak verir
         show=[]
         for isd in self.isdir:
             for add in PSA(word,Help(driv=isd).Folder()).Match():
                     show.append(add)
         return show
+    def OpenExtension(self,path): # list or str girilen yoldaki dosya yı açar liste veya str olarak girilebilir
+        liste=[]
+        if type(liste)==type(path):
+            for pat in path:
+                os.startfile(pat)
+        else:
+            os.startfile(path)
