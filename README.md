@@ -1,17 +1,19 @@
 # use as follow
 
- This is a file or folder search engine made by python
+# This is a file or folder search engine made by python
 
- Speed and other features added
+# Speed ​​and other features added
+
 
 
 import pfsearch as pf
+pf=pf.PFSEARCH()  
 
-pf=pf.PFSEARCH(word)  --> word = this means ,This is the word you want to search
+folder=pf.Folder(word) -->  this is a list
+file=pf.File(word)   -->   this is a list
 
-folder=pf.Folder() -->  this is a list
-
-file=pf.File()   -->   this is a list
+--> word = this means ,This is the word you want to search
 
 
-#to be continued
+
+# to be continued
