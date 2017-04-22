@@ -30,9 +30,37 @@ class Help():
         except PermissionError:
             pass
         return self.isfile
+class PSA():
+    " This class is PYTHON SEARCH ALGORİTHMA "
+    def __init__(self,word,word_list):
+        self.word=word.lower()
+        self.result=[]
+        self.word_list=[]
+        for wor in word_list:
+            self.word_list.append(wor.lower())
+    def Match(self):
+        for word_l in self.word_list: # bu tam eşleşme olanları alıyor önce
+            if self.word==os.path.split(word_l)[1] and word_l not in self.result:
+                self.result.append(word_l)
+        for word_l in self.word_list:
+            # bura da tam eşitlik olmasada girilen kelime nın harf sayısından yarısı ile eşlesirse
+            number=0
+            while True:
+                try:
+                    if os.path.split(word_l)[1][number]==self.word[number] and word_l not in self.result:
+                        number+=1
+                    else:
+                        if number>int(len(self.word)/2) and word_l not in self.result:
+                            self.result.append(word_l)
+                        break
+                except IndexError:
+                    break
+        for word_l in self.word_list:
+            if self.word in os.path.split(word_l)[1] and word_l not in self.result:
+                self.result.append(word_l)
+        return self.result
 class PFSEARCH():
-    def __init__(self,word):
-        self.word=word # her fonksiyon için geçerli olan aranan kelimeyi alıyoruz
+    def __init__(self):
         self.drivers=[] # ve pc de kullanılan sürücü yollarını buluyoruz
         extensions="dabqwrtyuıopğüişlkjfszxvnmöçc/"
         for ex in extensions:
@@ -41,7 +69,7 @@ class PFSEARCH():
                 self.drivers.append(str(ex)+":"+os.sep)
             except:
                 pass
-        ########### pc deki tüm klasörleri bulan fonksiyon ####################################
+        ####################### pc deki tüm klasörleri bulan fonksiyon #############
         self.isdir=[] # bu pc de ki tüm klasör lerin listesidir
         self.show=[] # bu ise sadece girilen
         for driving in self.drivers: # burda sınıf çağırıldıgında bulunan sürücüleri alıyoruz
@@ -52,16 +80,15 @@ class PFSEARCH():
                 if fo not in self.isdir:
                     self.isdir.append(fo) # bulunan her klasörü genişlemesi için isdire ekliyoruz
         ###########################################################################
-    def File(self): # aranan kelime ile işlesen dosya isimlerini bulur liste olarak verir
+    def File(self,word): # aranan kelime ile işlesen dosya isimlerini bulur liste olarak verir
         show=[]
         for isd in self.isdir :
-            for fo in Help().File(driv=isd):
-                if self.word.lower() in os.path.split(fo)[1].lower():
-                    show.append(fo)
+            for add in PSA(word,Help(driv=isd).File()).Match():
+                show.append(add)
         return show
-    def Folder(self): # aranan kelime mile eşleşen dosyaları bulur ve liste olarak verir
+    def Folder(self,word): # aranan kelime mile eşleşen dosyaları bulur ve liste olarak verir
         show=[]
         for isd in self.isdir:
-            if self.word.lower() in os.path.split(isd)[1].lower():
-                show.append(isd)
+            for add in PSA(word,Help(driv=isd).Folder()).Match():
+                    show.append(add)
         return show
