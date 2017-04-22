@@ -2,17 +2,21 @@
 
 # This is a file or folder search engine made by python
 
-# Speed and other features added
+# Speed ​​and other features added
 
+import filop as fi
 
+fi=fi.FILOP()
 
-import pfsearch as pf
+folder=fi.SearchFolder(word) -->  this is a list
 
-pf=pf.PFSEARCH()  
+file=fi.SearchFile(word)   -->   this is a list
 
-folder=pf.Folder(word) -->  this is a list
+open=fi.OpenExtension(path) --> This function will open files or folders
 
-file=pf.File(word)   -->   this is a list
+You must enter the file path,if path is list,they will all open
+
+--> path= this is may str or list
 
 --> word = this means ,This is the word you want to search
 
