@@ -14,6 +14,8 @@ file=fi.SearchFile(word)   -->   this is a list
 
 open=fi.OpenExtension(path) --> This function will open files or folders
 
+size=fi.Size(path)   -->   this is a list
+
 You must enter the file path,if path is list,they will all open
 
 --> path= this is may str or list
