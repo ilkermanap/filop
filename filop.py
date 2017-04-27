@@ -160,7 +160,3 @@ class FILOP():
                 return show
         else:
             return "You should only use list or str" # buraya düzgün bir hata olayı yap
-x=FILOP()
-y=x.SearchFile("resim")
-for o in x.Size(y):
-    print(o)
