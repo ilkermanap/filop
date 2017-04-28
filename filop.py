@@ -67,7 +67,7 @@ class PSA():
             if self.word==os.path.split(word_l)[1] and word_l not in self.result:
                 self.result.append(word_l)
         for word_l in self.word_list:
-            # bura da tam eşitlik olmasada girilen kelime nın harf sayısından yarısı ile eşlesirse
+            # bura da tam eşitlik olmasada girilen kelime nın harf sayısından yarısından fazla ile eşlesirse
             number=0
             while True:
                 try:
@@ -88,7 +88,7 @@ class FILOP():
     def __init__(self,dont_us_search=True):
         # dont_us_search eğer False ise arama fonskiyonlarını kullanamaz ve diğer işlemleri daha hızlı yapar
         self.drivers=[] # ve pc de kullanılan sürücü yollarını buluyoruz
-        extensions="dabqwrtyuıopğüişlkjfszxvnmöçc/"
+        extensions="qwertyuıopğüişlkjhgfdsazxcvbnmöç/"
         for ex in extensions:
             try:
                 os.listdir(str(ex)+":")
@@ -98,7 +98,6 @@ class FILOP():
         ####################### pc deki tüm klasörleri bulan fonksiyon #############
         if dont_us_search==True:
             self.isdir=[] # bu pc de ki tüm klasör lerin listesidir
-            self.show=[] # bu ise sadece girilen
             for driving in self.drivers: # burda sınıf çağırıldıgında bulunan sürücüleri alıyoruz
                 for i in Help(driving).Folder(): # ve her bulunan sürücüdeki klasörleri yardım sayesinde buraya alıyoruz
                     self.isdir.append(i) # bulunan tüm klasör leri alıyorum
