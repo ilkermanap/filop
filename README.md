@@ -6,15 +6,19 @@
 
 import filop as fi
 
-fi=fi.FILOP()
+to find the all drivers from pc --> fi.FILOP().drivers
 
-folder=fi.SearchFolder(word) -->  this is a list
+to find the all folder from pc --> fi.FILOP().isdir
 
-file=fi.SearchFile(word)   -->   this is a list
+folder=fi.FILOP().SearchFolder(word) -->  this is a list
 
-open=fi.OpenExtension(path) --> This function will open files or folders
+file=fi.FILOP().SearchFile(word)   -->   this is a list
 
-size=fi.Size(path)   -->   this is a list
+open=fi.FILOP().OpenExtension(path) --> This function will open files or folders
+
+size=fi.FILOP().Size(path)   -->   this is a list
+
+If the file path is known, it needs to be done fi.FILOP(dont_use_search = False).Size(path) to calculate the size faster
 
 You must enter the file path,if path is list,they will all open
 
