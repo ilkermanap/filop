@@ -8,7 +8,6 @@ class Help():
         self.isdir=[] # bu bulunan klasör leri geçeci depoluyor
         self.isfile=[] # bu bulunan dosyaların geçesi depo listesidir
         self.driv=driv # girilen driver yani sürücü işte
-        self.path_true={} # bu da path_ =True girildiğinde her türü sınıflandıran sözlüktür
     def folder(self):# girilen uzantının altındaki klasör lerin bbulur vemliste olarak verir
         try:
             for sea in os.listdir(self.driv):
