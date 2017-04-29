@@ -7,33 +7,23 @@ Speed and other features added
 Use as follow
 -------
 
-'''python
+@octocat :+1: This PR looks great - it's ready to merge! :shipit:
 
-     import filop as fi
-     fi.Filop().drivers # to find the all drivers from pc
-     fi.Filop().isdir # to find the all folder from pc
-     folder=fi.Filop().searchfolder(word)  # this is a list
-     file=fi.Filop().searchfile(word)  #  this is a list
-     type=fi.Filop().searchfile(word,"txt")  # what file type you enter, it will give you these types
-     type=fi.Filop().searchfile(word,["txt","jpg","png"]) # you can enter like this
-     open=fi.Filop().open(path) # This function will open files or folders
-     size=fi.Filop().size(path)  # this is a list
-     fi.Filop(dont_use_search = False).size(path) #If the file path is known, it needs to be done to calculate the size faster
-                                                  #You must enter the file path,if path is list,they will all open'''
+.. code-block:: python
+
+    import filop as fi
+    fi.Filop().drivers # to find the all drivers from pc
+    fi.Filop().isdir # to find the all folder from pc
+    folder=fi.Filop().searchfolder(word)  # this is a list
+    file=fi.Filop().searchfile(word)  #  this is a list
+    type=fi.Filop().searchfile(word,"txt")  # what file type you enter, it will give you these types
+    type=fi.Filop().searchfile(word,["txt","jpg","png"]) # you can enter like this
+    open=fi.Filop().open(path) # This function will open files or folders
+    size=fi.Filop().size(path)  # this is a list
+    fi.Filop(dont_use_search = False).size(path) #If the file path is known, it needs to be done to calculate the size faster
+                                                  #You must enter the file path,if path is list,they will all open
                                                   
 - path= this is may str or list
 - word = this means ,This is the word you want to search
 
 - to be continued
-
-.. code-block:: python
-
-   #!/usr/bin/env python
-   #/var/wsgi/earthreader.wsgi
-   import sys
-   from earthreader.web import app as application
-
-   application.config.update(
-       REPOSITORY='/path/to/repository/dir'
-   )
-
