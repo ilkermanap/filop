@@ -160,7 +160,7 @@ class Filop():
             return show
         elif type(str(path))==type(path): # sadece bir tane str olarak girilmiş ise
             if os.path.isfile(path): # dosya ise
-                return Help(driv=path).Size()
+                return Help(driv=path).size()
             else: # klasör ise
                 total_size=0
                 show=[]
