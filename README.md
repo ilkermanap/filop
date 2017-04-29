@@ -3,11 +3,13 @@
 
 Filop - File Operations
 ====================
+
 This is a file or folder search engine made by python
 Speed and other features added
 
 Use as follow
 -------
+
 .. code-block:: console
 
      import filop as fi
