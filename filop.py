@@ -1,13 +1,14 @@
-" filop --> file operaions --> dosya işlemleri"
+" filop --> file operations --> dosya işlemleri"
 import os
+
 class Help():
     """Bu yardım sınıfı SEARCH sınıfına yardım etmesi için yazıldı ve
      amacı girilen uzantılardaki tüm dosları ve klasörleri bulmaktır"""
     def __init__(self,driv):
-        self.isdir=[]# bu bulunan klasör leri geçeci depoluyor
-        self.isfile=[]
-        self.driv=driv
-
+        self.isdir=[] # bu bulunan klasör leri geçeci depoluyor
+        self.isfile=[] # bu bulunan dosyaların geçesi depo listesidir
+        self.driv=driv # girilen driver yani sürücü işte
+        self.path_true={} # bu da path_ =True girildiğinde her türü sınıflandıran sözlüktür
     def folder(self):# girilen uzantının altındaki klasör lerin bbulur vemliste olarak verir
         try:
             for sea in os.listdir(self.driv):
@@ -21,7 +22,8 @@ class Help():
             pass
         return self.isdir
 
-    def file(self): # girilen uzantının altındaki dosya ları bulup liste olarak verir
+    def file(self,type_=None): # girilen uzantının altındaki dosya ları bulup liste olarak verir
+        # type_=None ise tür araması yapmak istemiyordur
         try:
             for sea in os.listdir(self.driv):
                 full_ex=os.path.join(self.driv,sea)
@@ -29,9 +31,22 @@ class Help():
                     pass
                 else:
                     if os.path.isfile(full_ex) and full_ex not in self.isfile:
-                        self.isfile.append(full_ex) # ve girilen driv deki sürücülerinde ki klasörleri kaydediyoruz
+                        # burada bulunan dosyanın eğer türü hakkında bir seçim yapılmış ise gereken işlemler burda yapılıyor
+                        if type_!=None: # None değil ise dosya türü istiyordur
+                            if type(list(type_))==type(type_): # liste olarak belirli türleri isteyebilir
+                                for pat in type_:
+                                    if full_ex.endswith("."+pat):
+                                        self.isfile.append(full_ex)
+                            elif type(str(type_))==type(type_):
+                                if full_ex.endswith("."+type_):
+                                    self.isfile.append(full_ex)
+                                pass
+                        elif type_==None: # tür araması yapmıyorum
+                            self.isfile.append(full_ex) # ve girilen driv deki sürücülerinde ki klasörleri kaydediyoruz
         except PermissionError:
             pass
+        if type_==True:
+            return self.path_true
         return self.isfile
 
     def size(self,totaly=False):# normal çıktı verir liste veya dict değildir
@@ -63,32 +78,29 @@ class Search():
     " This class is PYTHON SEARCH ALGORİTHMA "
     def __init__(self,word,word_list):
         self.word=word.lower()
-        self.result=[]
+        self.match=[] # bu aranan kelime ile eşleşen sonuçları depolar
         self.word_list=[]
         for wor in word_list:
             self.word_list.append(wor.lower())
-     # match fonskiyonu nu init içine koyup bunu sil
-    def match(self):
         for word_l in self.word_list: # bu tam eşleşme olanları alıyor önce
-            if self.word==os.path.split(word_l)[1] and word_l not in self.result:
-                self.result.append(word_l)
+            if self.word==os.path.split(word_l)[1] and word_l not in self.match:
+                self.match.append(word_l)
         for word_l in self.word_list:
             # bura da tam eşitlik olmasada girilen kelime nın harf sayısından yarısından fazla ile eşlesirse
             number=0
             while True:
                 try:
-                    if os.path.split(word_l)[1][number]==self.word[number] and word_l not in self.result:
+                    if os.path.split(word_l)[1][number]==self.word[number] and word_l not in self.match:
                         number+=1
                     else:
-                        if number>int(len(self.word)/2) and word_l not in self.result:
-                            self.result.append(word_l)
+                        if number>int(len(self.word)/2) and word_l not in self.match:
+                            self.match.append(word_l)
                         break
                 except IndexError:
                     break
         for word_l in self.word_list:
-            if self.word in os.path.split(word_l)[1] and word_l not in self.result:
-                self.result.append(word_l)
-        return self.result
+            if self.word in os.path.split(word_l)[1] and word_l not in self.match:
+                self.match.append(word_l)
 
 
 class Filop():
@@ -114,17 +126,17 @@ class Filop():
                     if fo not in self.isdir:
                         self.isdir.append(fo) # bulunan her klasörü genişlemesi için isdire ekliyoruz
         ###########################################################################
-    def searchfile(self,word): # aranan kelime ile işlesen dosya isimlerini bulur liste olarak verir
+    def searchfile(self,word,type_=None): # aranan kelime ile işlesen dosya isimlerini bulur liste olarak verir
         show=[]
         for isd in self.isdir :
-            for add in Search(word,Help(driv=isd).file()).match():
+            for add in Search(word,Help(driv=isd).file(type_=type_)).match:
                 show.append(add)
         return show
 
     def searchfolder(self,word): # aranan kelime mile eşleşen dosyaları bulur ve liste olarak verir
         show=[]
         for isd in self.isdir:
-            for add in Search(word,Help(driv=isd).folder()).match():
+            for add in Search(word,Help(driv=isd).folder()).match:
                     show.append(add)
         return show
 
@@ -135,9 +147,6 @@ class Filop():
                 os.startfile(pat)
         else:
             os.startfile(path)
-
-    def filetype():
-        pass
 
     def size(self,path):
         if type(list(path))==type(path): # liste olarak girilmiş ise
