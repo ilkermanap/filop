@@ -7,7 +7,11 @@ Speed and other features added
 Use as follow
 -------
 
-@octocat :+1: This PR looks great - it's ready to merge! :shipit:
+```javascript
+if (isAwesome){
+  return true
+}
+```
 
 .. code-block:: python
 
