@@ -8,13 +8,6 @@ Use as follow
 -------
 
 ```javascript
-if (isAwesome){
-  return true
-}
-```
-
-.. code-block:: python
-
     import filop as fi
     fi.Filop().drivers # to find the all drivers from pc
     fi.Filop().isdir # to find the all folder from pc
@@ -26,6 +19,8 @@ if (isAwesome){
     size=fi.Filop().size(path)  # this is a list
     fi.Filop(dont_use_search = False).size(path) #If the file path is known, it needs to be done to calculate the size faster
                                                   #You must enter the file path,if path is list,they will all open
+```
+    
                                                   
 - path= this is may str or list
 - word = this means ,This is the word you want to search
