@@ -7,7 +7,7 @@ Speed and other features added
 Use as follow
 -------
 
-```javascript
+```python
     import filop as fi
     fi.Filop().drivers # to find the all drivers from pc
     fi.Filop().isdir # to find the all folder from pc
@@ -17,8 +17,9 @@ Use as follow
     type=fi.Filop().searchfile(word,["txt","jpg","png"]) # you can enter like this
     open=fi.Filop().open(path) # This function will open files or folders
     size=fi.Filop().size(path)  # this is a list
-    fi.Filop(dont_use_search = False).size(path) #If the file path is known, it needs to be done to calculate the size faster
-                                                  #You must enter the file path,if path is list,they will all open
+    #If the file path is known, it needs to be done to calculate the size faster
+    fi.Filop(dont_use_search = False).size(path) #You must enter the file path,if path is list,they will all open
+                                                  
 ```
     
                                                   
