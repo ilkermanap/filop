@@ -26,4 +26,14 @@ Use as follow
 
 - to be continued
 
+.. code-block:: python
+
+   #!/usr/bin/env python
+   #/var/wsgi/earthreader.wsgi
+   import sys
+   from earthreader.web import app as application
+
+   application.config.update(
+       REPOSITORY='/path/to/repository/dir'
+   )
 
