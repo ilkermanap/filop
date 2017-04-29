@@ -1,6 +1,3 @@
-.. image:: 
-
-
 Filop - File Operations
 ====================
 
