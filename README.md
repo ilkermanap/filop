@@ -1,33 +1,40 @@
-# use as follow
+.. image:: 
 
-# This is a file or folder search engine made by python
 
-# Speed ​​and other features added
+Filop - File Operations
+====================
+This is a file or folder search engine made by python
+Speed and other features added
 
-import filop as fi
+Use as follow
+-------
+.. code-block:: console
 
-to find the all drivers from pc --> fi.Filop().drivers
+     import filop as fi
 
-to find the all folder from pc --> fi.Filop().isdir
+     fi.Filop().drivers # to find the all drivers from pc
 
-folder=fi.Filop().searchfolder(word) -->  this is a list
+     fi.Filop().isdir # to find the all folder from pc
 
-file=fi.Filop().searchfile(word)   -->   this is a list
+     folder=fi.Filop().searchfolder(word)  # this is a list
 
-type=fi.Filop().searchfile(word,"txt")  --> what file type you enter, it will give you these types
+     file=fi.Filop().searchfile(word)  #  this is a list
 
-type=fi.Filop().searchfile(word,["txt","jpg","png"]) -->you can enter like this
+     type=fi.Filop().searchfile(word,"txt")  # what file type you enter, it will give you these types
 
-open=fi.Filop().open(path) --> This function will open files or folders
+     type=fi.Filop().searchfile(word,["txt","jpg","png"]) # you can enter like this
 
-size=fi.Filop().size(path)   -->   this is a list
+     open=fi.Filop().open(path) # This function will open files or folders
 
-If the file path is known, it needs to be done fi.Filop(dont_use_search = False).size(path) to calculate the size faster
+     size=fi.Filop().size(path)  # this is a list
+     
+     fi.Filop(dont_use_search = False).size(path) #If the file path is known, it needs to be done to calculate the size faster
+                                                  #You must enter the file path,if path is list,they will all open
 
-You must enter the file path,if path is list,they will all open
+     #path= this is may str or list
 
---> path= this is may str or list
+     #word = this means ,This is the word you want to search
 
---> word = this means ,This is the word you want to search
+- to be continued
 
-# to be continued
+
