@@ -9,14 +9,15 @@ Use as follow
 
 ```python
     import filop as fi
-    fi.Filop().drivers # to find the all drivers from pc
-    fi.Filop().isdir # to find the all folder from pc
-    folder=fi.Filop().searchfolder(word)  # this is a list
-    file_=fi.Filop().searchfile(word)  #  this is a list
-    type_=fi.Filop().searchfile(word,"txt")  # what file type you enter, it will give you these types
-    type_=fi.Filop().searchfile(word,["txt","jpg","png"]) # you can enter like this
-    open_=fi.Filop().open(path) # This function will open files or folders
-    size=fi.Filop().size(path)  # this is a list
+    x=fi.Filop() # Because it scans all the files, it does so for speeding up other processes
+    fi.Filop(dont_use_search = False).drivers # to find the all drivers from pc
+    x.isdir # to find the all folder from pc
+    folder=x.searchfolder(word)  # this is a list
+    file_=x.searchfile(word)  #  this is a list
+    type_=x.searchfile(word,"txt")  # what file type you enter, it will give you these types
+    type_=x.searchfile(word,["txt","jpg","png"]) # you can enter like this
+    open_=x.open(path) # This function will open files or folders
+    size=x.size(path)  # this is a list
     #If the file path is known, it needs to be done to calculate the size faster
     fi.Filop(dont_use_search = False).size(path) #You must enter the file path,if path is list,they will all open
                                                   
