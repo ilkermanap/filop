@@ -78,15 +78,15 @@ class Search():
     def __init__(self,word,word_list):
         self.word=word.lower()
         self.match=[] # bu aranan kelime ile eşleşen sonuçları depolar
-        self.word_list=[]
-        for wor in word_list:
-            self.word_list.append(wor.lower())
+        self.word_list=word_list
         for word_l in self.word_list: # bu tam eşleşme olanları alıyor önce
+            word_l=word_l.lower()
             if self.word==os.path.split(word_l)[1] and word_l not in self.match:
                 self.match.append(word_l)
         for word_l in self.word_list:
             # bura da tam eşitlik olmasada girilen kelime nın harf sayısından yarısından fazla ile eşlesirse
             number=0
+            word_l=word_l.lower()
             while True:
                 try:
                     if os.path.split(word_l)[1][number]==self.word[number] and word_l not in self.match:
@@ -98,6 +98,7 @@ class Search():
                 except IndexError:
                     break
         for word_l in self.word_list:
+            word_l=word_l.lower()
             if self.word in os.path.split(word_l)[1] and word_l not in self.match:
                 self.match.append(word_l)
 
