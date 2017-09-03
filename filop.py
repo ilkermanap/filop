@@ -19,6 +19,8 @@ class Help():
                         self.isdir.append(full_ex) # ve girilen driv deki sürücülerinde ki klasörleri kaydediyoruz
         except PermissionError:
             pass
+        except FileNotFoundError:
+            pass
         return self.isdir
 
     def file(self,type_=None): # girilen uzantının altındaki dosya ları bulup liste olarak verir
@@ -105,7 +107,7 @@ class Search():
 
 class Filop():
     """ python dosya işlemleri, ana sınıf bu """
-    def __init__(self,dont_us_search=True):
+    def __init__(self,dont_us_search=True): # burada mantık hatası var
         # dont_us_search eğer False ise arama fonskiyonlarını kullanamaz ve diğer işlemleri daha hızlı yapar
         self.drivers=[] # ve pc de kullanılan sürücü yollarını buluyoruz
         extensions="qwertyuıopğüişlkjhgfdsazxcvbnmöç/"
